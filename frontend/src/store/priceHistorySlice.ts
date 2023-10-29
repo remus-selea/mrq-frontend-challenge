@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@/store/index';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "./store";
 
 type historyEntry = {
   time: number;
@@ -25,17 +25,20 @@ const initialState: PriceHistoryState = {
   history: [],
   apiState: {
     loading: null,
-    error: false
-  }
+    error: false,
+  },
 };
 
 export const fetchPriceHistory = createAsyncThunk(
-  'stocks/fetchPriceHistory',
+  "stocks/fetchPriceHistory",
   // if you type your function argument here
   async (symbolId: string, thunkAPI) => {
-    const response = await fetch(`http://localhost:3100/api/stock/history/${symbolId}`, {
-      signal: thunkAPI.signal
-    });
+    const response = await fetch(
+      `http://localhost:3100/api/stock/history/${symbolId}`,
+      {
+        signal: thunkAPI.signal,
+      }
+    );
     // await delayPromise(1000);
     return (await response.json()) as PriceHistoryResponse;
   }
@@ -46,7 +49,7 @@ const selectPriceHistory = (state: RootState) => state.priceHistory.history;
 const apiState = (state: RootState) => state.priceHistory.apiState;
 
 const priceHistorySlice = createSlice({
-  name: 'priceHistory',
+  name: "priceHistory",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -60,22 +63,22 @@ const priceHistorySlice = createSlice({
       state.symbol = symbol;
     });
 
-    builder.addCase(fetchPriceHistory.rejected, (state, action) => {
+    builder.addCase(fetchPriceHistory.rejected, (state) => {
       state.apiState.error = true;
       state.apiState.loading = false;
     });
 
-    builder.addCase(fetchPriceHistory.pending, (state, action) => {
+    builder.addCase(fetchPriceHistory.pending, (state) => {
       state.apiState.error = false;
       state.apiState.loading = true;
     });
-  }
+  },
 });
 
 const selectors = {
   selectPriceHistory,
   selectSymbolInfo,
-  apiState
+  apiState,
 };
 
 export default priceHistorySlice;

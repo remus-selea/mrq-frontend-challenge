@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import "./symbolsView.css";
 import PriceChart from "@/components/SymbolsView/PriceChart/PriceChart";
 import SymbolsGrid from "./SymbolsGrid/SymbolsGrid";
 
 const SymbolsView = () => {
   const [activeSymbol, setActiveSymbol] = useState<null | string>(null);
-  const handleSymbolClick = (symbolId: string) => {
+  const handleSymbolClick = useCallback((symbolId: string) => {
     setActiveSymbol((s) => (s === symbolId ? null : symbolId));
-  };
+  }, []);
 
   return (
     <div>

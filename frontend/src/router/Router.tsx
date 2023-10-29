@@ -1,16 +1,15 @@
-
-import { Route, Routes, Navigate } from 'react-router-dom';
-import { Suspense } from 'react';
-import ProfileView from '@/components/ProfileView/ProfileView';
-import SymbolsView from '@/components/SymbolsView/SymbolsView';
-import StatementsView from '@/components/StatementsView/StatementsView';
-import Loading from '@/components/Loading/Loading';
+import { Route, Routes, Navigate } from "react-router-dom";
+import { Suspense } from "react";
+import ProfileView from "@/components/ProfileView/ProfileView";
+import SymbolsView from "@/components/SymbolsView/SymbolsView";
+import StatementsView from "@/components/StatementsView/StatementsView";
+import Loading from "@/components/Loading/Loading";
 
 const Router = () => {
   return (
     <Suspense
       fallback={
-        <div style={{ minHeight: '50px', display: 'flex' }}>
+        <div style={{ minHeight: "50px", display: "flex" }}>
           <Loading />
         </div>
       }

@@ -21,7 +21,7 @@
 }
 .loading__pulse::before,
 .loading__pulse::after {
-  content: '';
+  content: "";
   display: inline-block;
   position: absolute;
   top: 0;
