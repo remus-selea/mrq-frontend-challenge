@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import './symbolsView.css';
-import SymbolsGrid from '../SymbolsGrid/SymbolsGrid';
-import PriceChart from '@/components/PriceChart/PriceChart';
+import { useState } from "react";
+import "./symbolsView.css";
+import PriceChart from "@/components/SymbolsView/PriceChart/PriceChart";
+import SymbolsGrid from "./SymbolsGrid/SymbolsGrid";
 
 const SymbolsView = () => {
   const [activeSymbol, setActiveSymbol] = useState<null | string>(null);
