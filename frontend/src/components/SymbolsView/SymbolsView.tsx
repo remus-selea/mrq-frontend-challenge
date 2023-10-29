@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './symbolsView.css';
-import SymbolsGrid from '../SymbolsGrid';
+import SymbolsGrid from '../SymbolsGrid/SymbolsGrid';
 import PriceChart from '@/components/PriceChart/PriceChart';
 
 const SymbolsView = () => {

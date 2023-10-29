@@ -1,10 +1,11 @@
-import SymbolsView from '@/components/SymbolsView';
-import ProfileView from '@/components/ProfileView';
-import StatementsView from '@/components/StatementsView';
+
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Suspense } from 'react';
 import Loading from '@/components/Loading';
-import('@/components/ProfileView');
+import ProfileView from '@/components/ProfileView/ProfileView';
+import SymbolsView from '@/components/SymbolsView/SymbolsView';
+import StatementsView from '@/components/StatementsView/StatementsView';
+
 const Router = () => {
   return (
     <Suspense

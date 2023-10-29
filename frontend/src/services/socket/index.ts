@@ -1,5 +1,5 @@
-import { store } from '@/store';
 import pricesSlice from '@/store/pricesSlice';
+import { store } from '@/store/store';
 
 const connect = () => {
   console.log('CONNECTION STARTING...');
