@@ -1,0 +1,20 @@
+{
+  "name": "mrq-fe-challenge",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "socket",
+    "frontend"
+  ],
+  "version": "1.0.0",
+  "main": "/",
+  "author": "Hristijan Petrovski",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "concurrently \"yarn workspace backend start\" \"yarn workspace socket start\" \"yarn workspace frontend dev\"",
+    "postinstall": "concurrently \"yarn workspace backend install\" \"yarn workspace socket install\" \"yarn workspace frontend install\""
+  },
+  "dependencies": {
+    "concurrently": "^8.0.1"
+  }
+}

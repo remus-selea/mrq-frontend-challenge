@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "description": "backend simulator for the frontend",
+  "main": "src/index.js",
+  "author": "Hristijan Petrovski",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}

@@ -1,0 +1,38 @@
+.symbolCard {
+  border: 2px solid black; /* just for visibility, feel free to remove it */
+  margin: 10px; /* just for visibility, feel free to remove it */
+  padding: 10px; /* just for visibility, feel free to remove it */
+}
+
+.symbolCard__shake {
+  animation: shake 0.62s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-2px);
+  }
+
+  20%,
+  80% {
+    transform: translateX(4px);
+  }
+
+  25%,
+  35%,
+  45%,
+  55%,
+  65%,
+  75% {
+    transform: translateX(-6px);
+  }
+
+  30%,
+  40%,
+  50%,
+  60%,
+  70% {
+    transform: translateX(6px);
+  }
+}

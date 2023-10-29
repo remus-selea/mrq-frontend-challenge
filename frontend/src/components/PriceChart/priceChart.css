@@ -1,0 +1,13 @@
+.priceChart {
+  width: 400px;
+  height: 300px;
+  display: flex;
+}
+
+@media (max-width: 1023px) {
+  .priceChart {
+    max-height: 250px;
+    height: 180px;
+    width: 100%;
+  }
+}
