@@ -8,8 +8,8 @@
     "ws": "^8.13.0"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^1.0.3",
-    "@types/node": "^18.15.11",
+    "@tsconfig/node20": "^20.1.2",
+    "@types/node": "^20.8.9",
     "@types/ws": "^8.5.4",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
@@ -17,7 +17,7 @@
     "typescript": "^5.0.3"
   },
   "scripts": {
-    "start": "ts-node-dev --respawn --no-notify --quiet src/index.ts",
+    "start": "ts-node-dev --respawn --no-notify --quiet --project tsconfig.json ./src/index.ts",
     "build": "tsc"
   }
 }
