@@ -10,15 +10,13 @@ const SymbolsView = () => {
   }, []);
 
   return (
-    <div>
-      <div className="symbolsView">
-        <div className="symbolsView__chart">
-          <h3>PRICE HISTORY</h3>
-          <PriceChart symbolId={activeSymbol} />
-        </div>
-        <div className="symbolsView__cards">
-          <SymbolsGrid onSymbolClick={handleSymbolClick} />
-        </div>
+    <div className="symbolsView">
+      <div className="symbolsView__chart">
+        <h3>PRICE HISTORY</h3>
+        <PriceChart symbolId={activeSymbol} />
+      </div>
+      <div className="symbolsView__cards">
+        <SymbolsGrid onSymbolClick={handleSymbolClick} />
       </div>
     </div>
   );

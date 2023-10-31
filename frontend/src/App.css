@@ -76,12 +76,18 @@ select {
 #root {
   height: 100vh;
   width: 100%;
+
+  display: flex;
+  flex-direction: column; /* just in case the #root element will have more than 1 child */
 }
 
 .App {
   padding: 12px 24px 0;
   background-color: rgba(14, 17, 35, 0.07);
   min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 767px) {
