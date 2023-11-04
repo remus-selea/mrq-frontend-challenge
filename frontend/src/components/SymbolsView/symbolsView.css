@@ -2,10 +2,16 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  height: 100%;
 }
 
 .symbolsView__cards {
   overflow-y: auto;
+}
+
+/* centers the loading div horizontally */
+.symbolsView__cards:has(.loading) {
+  display: flex;
 }
 
 .symbolsView__chart {
