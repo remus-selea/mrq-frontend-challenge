@@ -6,11 +6,13 @@ type TrendImageProps = {
   trend: "UP" | "DOWN" | null;
 };
 
-const TrendImage = memo(function SymbolCardHeader(props: TrendImageProps) {
+const TrendImage: React.FC<TrendImageProps> = memo(function TrendImage(
+  props: TrendImageProps
+) {
   const { trend } = props;
 
   if (!trend) {
-    return;
+    return null;
   }
 
   let imgSrc;

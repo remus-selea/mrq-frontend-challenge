@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import "./symbolsView.css";
-import PriceChart from "@/components/SymbolsView/PriceChart/PriceChart";
 import SymbolsGrid from "./SymbolsGrid/SymbolsGrid";
+import PriceChart from "./PriceChart/PriceChart";
 
 const SymbolsView = () => {
   const [activeSymbol, setActiveSymbol] = useState<null | string>(null);

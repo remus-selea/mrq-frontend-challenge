@@ -23,11 +23,11 @@ const PriceChart = ({ symbolId }: PriceChartProps) => {
   const symbolInfo = useAppSelector(selectors.selectSymbolInfo);
 
   if (symbolId === null) {
-    return "Select stock";
+    return <>Select stock</>;
   }
 
   if (apiState.error) {
-    return "Something went wrong.";
+    return <>Something went wrong.</>;
   }
 
   return (

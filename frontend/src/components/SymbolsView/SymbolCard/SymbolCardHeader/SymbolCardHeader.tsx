@@ -1,7 +1,7 @@
-import React, { memo } from "react";
-import TrendImage from "./TrendImage/TrendImage";
+import { memo } from "react";
 
 import "./SymbolCardHeader.css";
+import TrendImage from "./TrendImage/TrendImage";
 
 type SymbolCardHeaderProps = {
   id: string;
