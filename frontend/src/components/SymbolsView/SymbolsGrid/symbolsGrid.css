@@ -6,7 +6,7 @@
   grid-column-gap: 24px;
 
   /* Adds space for the trend image with position absolute */
-  margin: 24px;
+  margin: 26px;
 }
 
 @media (min-width: 494px) {
