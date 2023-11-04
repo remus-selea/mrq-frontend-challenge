@@ -1,9 +1,12 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import { Suspense } from "react";
-import ProfileView from "@/components/ProfileView/ProfileView";
-import SymbolsView from "@/components/SymbolsView/SymbolsView";
-import StatementsView from "@/components/StatementsView/StatementsView";
+import { Suspense, lazy } from "react";
 import Loading from "@/components/Loading/Loading";
+
+const SymbolsView = lazy(() => import("@/components/SymbolsView/SymbolsView"));
+const ProfileView = lazy(() => import("@/components/ProfileView/ProfileView"));
+const StatementsView = lazy(
+  () => import("@/components/StatementsView/StatementsView")
+);
 
 const Router = () => {
   return (
