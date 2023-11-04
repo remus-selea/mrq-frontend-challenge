@@ -24,5 +24,6 @@
 
   .symbolsView__chart {
     order: 2;
+    min-width: 424px;
   }
 }
