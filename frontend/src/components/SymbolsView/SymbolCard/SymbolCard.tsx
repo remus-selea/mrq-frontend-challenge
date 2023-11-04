@@ -87,7 +87,7 @@ const SymbolCard = memo(function SymbolCard(props: SymbolCardProps) {
       onKeyDown={handleInteraction}
     >
       <SymbolCardHeader id={id} trend={trend} />
-      <div className="symbol-card-content">
+      <div className="symbolCard-content">
         <PriceContainer priceValue={priceValue} />
 
         {detailsData.map((item, index) => (

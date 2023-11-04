@@ -1,4 +1,6 @@
-import React, { memo } from "react";
+import { memo } from "react";
+
+import "./PriceContaienr.css";
 
 type PriceContainerProps = {
   priceValue: number;

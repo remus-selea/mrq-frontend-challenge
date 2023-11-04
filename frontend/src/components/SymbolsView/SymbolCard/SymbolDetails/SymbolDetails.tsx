@@ -1,5 +1,7 @@
 import { ReactNode, memo } from "react";
 
+import "./SymbolDetails.css";
+
 type SymbolDetailsProps = {
   iconComponent: ReactNode;
   text: string;

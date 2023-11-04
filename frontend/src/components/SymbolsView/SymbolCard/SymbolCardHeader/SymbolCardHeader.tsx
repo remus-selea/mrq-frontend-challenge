@@ -1,6 +1,8 @@
 import React, { memo } from "react";
 import TrendImage from "./TrendImage/TrendImage";
 
+import "./SymbolCardHeader.css";
+
 type SymbolCardHeaderProps = {
   id: string;
   trend: "UP" | "DOWN" | null;
