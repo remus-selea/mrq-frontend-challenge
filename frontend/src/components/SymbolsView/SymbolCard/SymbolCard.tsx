@@ -3,12 +3,14 @@ import { ReactComponent as IndustryLogo } from "@/assets/industry.svg";
 import { ReactComponent as CompanyIcon } from "@/assets/company.svg";
 import { ReactComponent as MarketCapIcon } from "@/assets/market_cap.svg";
 import { useAppSelector } from "@/hooks/redux";
-import getTrendImage from "./utils/getTrendImage";
 import abbreviateNumber from "./utils/abbreviateNumber";
 import isClick from "./utils/isClick";
 import isEnterKeyPress from "./utils/isEnterKeyPress";
 import calculateAbsolutePercentageDifference from "./utils/calculateAbsolutePercentageDifference";
 import useTimedClassOnCondition from "./hooks/useTimedClassOnCondition";
+import SymbolCardHeader from "./SymbolCardHeader/SymbolCardHeader";
+import PriceContainer from "./PriceContainer/PriceContainer";
+import SymbolDetails from "./SymbolDetails/SymbolDetails";
 
 import "./symbolCard.css";
 
@@ -62,6 +64,15 @@ const SymbolCard = memo(function SymbolCard(props: SymbolCardProps) {
     id === activeSymbol ? "symbolCard-active" : ""
   } ${priceChangeClass} ${significantPriceChangeClass}`;
 
+  const detailsData = [
+    { icon: <CompanyIcon className="symbol-details-svg" />, text: companyName },
+    { icon: <IndustryLogo className="symbol-details-svg" />, text: industry },
+    {
+      icon: <MarketCapIcon className="symbol-details-svg" />,
+      text: abbreviateNumber(marketCap),
+    },
+  ];
+
   return (
     <div
       className={cardClasses}
@@ -70,31 +81,18 @@ const SymbolCard = memo(function SymbolCard(props: SymbolCardProps) {
       onClick={handleInteraction}
       onKeyDown={handleInteraction}
     >
-      <div className="symbol-card-head">
-        <div>{id}</div>
-        <div className="symbol-card-trend">{getTrendImage(trend)}</div>
-      </div>
+      <SymbolCardHeader id={id} trend={trend} />
       <div className="symbol-card-content">
-        <div className="price-container">
-          <div className="price-text">PRICE:</div>
-          <div className="price-amount">
-            {priceValue === 0 ? "" : priceValue}
-          </div>
-        </div>
-        <div className="symbol-details">
-          <CompanyIcon className="symbol-details-svg" />
-          <div className="symbol-details-text">{companyName}</div>
-        </div>
-        <div className="symbol-details">
-          <IndustryLogo className="symbol-details-svg" />
-          <div className="symbol-details-text">{industry}</div>
-        </div>
-        <div className="symbol-details">
-          <MarketCapIcon className="symbol-details-svg" />
-          <div className="symbol-details-text">
-            {abbreviateNumber(marketCap)}
-          </div>
-        </div>
+        <PriceContainer priceValue={priceValue} />
+
+        {detailsData.map((item, index) => (
+          <SymbolDetails
+            iconComponent={item.icon}
+            text={item.text}
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+          />
+        ))}
       </div>
     </div>
   );
