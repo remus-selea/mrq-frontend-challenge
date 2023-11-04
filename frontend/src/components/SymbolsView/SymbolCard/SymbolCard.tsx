@@ -1,9 +1,9 @@
-import React, { memo, useCallback } from "react";
+import React, { memo, useCallback, useMemo } from "react";
 import { ReactComponent as IndustryLogo } from "@/assets/industry.svg";
 import { ReactComponent as CompanyIcon } from "@/assets/company.svg";
 import { ReactComponent as MarketCapIcon } from "@/assets/market_cap.svg";
 import { useAppSelector } from "@/hooks/redux";
-import abbreviateNumber from "./utils/abbreviateNumber";
+import abbreviateNumberWithMagnitude from "./utils/abbreviateNumberWithMagnitude";
 import isClick from "./utils/isClick";
 import isEnterKeyPress from "./utils/isEnterKeyPress";
 import calculateAbsolutePercentageDifference from "./utils/calculateAbsolutePercentageDifference";
@@ -64,14 +64,19 @@ const SymbolCard = memo(function SymbolCard(props: SymbolCardProps) {
     id === activeSymbol ? "symbolCard-active" : ""
   } ${priceChangeClass} ${significantPriceChangeClass}`;
 
-  const detailsData = [
-    { icon: <CompanyIcon className="symbol-details-svg" />, text: companyName },
-    { icon: <IndustryLogo className="symbol-details-svg" />, text: industry },
-    {
-      icon: <MarketCapIcon className="symbol-details-svg" />,
-      text: abbreviateNumber(marketCap),
-    },
-  ];
+  const detailsData = useMemo(() => {
+    return [
+      {
+        icon: <CompanyIcon className="symbol-details-svg" />,
+        text: companyName,
+      },
+      { icon: <IndustryLogo className="symbol-details-svg" />, text: industry },
+      {
+        icon: <MarketCapIcon className="symbol-details-svg" />,
+        text: abbreviateNumberWithMagnitude(marketCap),
+      },
+    ];
+  }, [companyName, industry, marketCap]);
 
   return (
     <div
