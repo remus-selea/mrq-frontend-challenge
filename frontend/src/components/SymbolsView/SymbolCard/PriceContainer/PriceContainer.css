@@ -1,4 +1,16 @@
 .price-container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 8px;
+}
+
+.price-text {
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.price-amount {
+  font-size: 1.5em;
+  font-weight: bold;
 }
