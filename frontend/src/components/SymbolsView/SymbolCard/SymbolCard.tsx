@@ -24,8 +24,23 @@ const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
     onClick(id);
   }, [id, onClick]);
 
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === "Enter") {
+        handleOnClick();
+      }
+    },
+    [handleOnClick]
+  );
+
   return (
-    <div onClick={handleOnClick} className="symbolCard">
+    <div
+      className="symbolCard"
+      role="button"
+      tabIndex={0}
+      onClick={handleOnClick}
+      onKeyDown={handleKeyDown}
+    >
       <div className="symbol-card-head">
         <div>{id}</div>
         <div className="symbol-card-trend">{getTrendImage(trend)}</div>
