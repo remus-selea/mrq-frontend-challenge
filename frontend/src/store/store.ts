@@ -5,6 +5,8 @@ import thunkMiddleware from "redux-thunk";
 import stocksSlice from "@/store/stocksSlice";
 import priceHistorySlice from "@/store/priceHistorySlice";
 
+const isProd = import.meta.env.PROD;
+
 export const store = configureStore({
   reducer: {
     // Add the generated reducer as a specific top-level slice
@@ -16,6 +18,7 @@ export const store = configureStore({
   // and other useful features of `rtk-query`.
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([thunkMiddleware]),
+  devTools: !isProd,
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors
