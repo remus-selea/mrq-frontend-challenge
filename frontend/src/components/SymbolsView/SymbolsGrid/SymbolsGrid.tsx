@@ -7,9 +7,10 @@ import "./symbolsGrid.css";
 
 type SymbolsGridProps = {
   onSymbolClick: (symbolId: string) => void;
+  activeSymbol: string | null;
 };
 
-const SymbolsGrid = ({ onSymbolClick }: SymbolsGridProps) => {
+const SymbolsGrid = ({ onSymbolClick, activeSymbol }: SymbolsGridProps) => {
   const stockSymbols = useAppSelector(selectors.selectStockIds);
   const prices = useAppSelector((state) => state.prices);
   const dispatch = useAppDispatch();
@@ -20,12 +21,12 @@ const SymbolsGrid = ({ onSymbolClick }: SymbolsGridProps) => {
 
   return (
     <div className="symbol-cards">
-      {stockSymbols.map((id, i) => (
+      {stockSymbols.map((id) => (
         <SymbolCard
           price={prices[id]}
           onClick={onSymbolClick}
-          // eslint-disable-next-line react/no-array-index-key
-          key={i}
+          key={id}
+          activeSymbol={activeSymbol}
           id={id}
         />
       ))}

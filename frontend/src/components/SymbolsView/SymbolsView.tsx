@@ -16,7 +16,10 @@ const SymbolsView = () => {
         <PriceChart symbolId={activeSymbol} />
       </div>
       <div className="symbolsView__cards">
-        <SymbolsGrid onSymbolClick={handleSymbolClick} />
+        <SymbolsGrid
+          onSymbolClick={handleSymbolClick}
+          activeSymbol={activeSymbol}
+        />
       </div>
     </div>
   );

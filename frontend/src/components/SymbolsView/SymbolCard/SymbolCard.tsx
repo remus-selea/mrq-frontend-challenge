@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { ReactComponent as IndustryLogo } from "@/assets/industry.svg";
 import { ReactComponent as CompanyIcon } from "@/assets/company.svg";
 import { ReactComponent as MarketCapIcon } from "@/assets/market_cap.svg";
@@ -6,6 +6,9 @@ import { useAppSelector } from "@/hooks/redux";
 import getTrendImage from "./utils/getTrendImage";
 import getFlooredPrice from "./utils/getFlooredPrice";
 import abbreviateNumber from "./utils/abbreviateNumber";
+import getPriceTrendClasses from "./utils/getPriceTrendClasses";
+import isClick from "./utils/isClick";
+import isEnterKeyPress from "./utils/isEnterKeyPress";
 
 import "./symbolCard.css";
 
@@ -13,33 +16,41 @@ type SymbolCardProps = {
   id: string;
   onClick: (symbolId: string) => void;
   price: number;
+  activeSymbol: string | null;
 };
 
-const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
+const SymbolCard = ({ id, onClick, price, activeSymbol }: SymbolCardProps) => {
   const { trend, industry, companyName, marketCap } = useAppSelector(
     (state) => state.stocks.entities[id]
   );
 
-  const handleOnClick = useCallback(() => {
-    onClick(id);
-  }, [id, onClick]);
-
-  const handleKeyDown = useCallback(
-    (event: React.KeyboardEvent) => {
-      if (event.key === "Enter") {
-        handleOnClick();
+  const handleInteraction = useCallback(
+    (event: React.SyntheticEvent) => {
+      if (isClick(event) || isEnterKeyPress(event)) {
+        onClick(id);
       }
     },
-    [handleOnClick]
+    [id, onClick]
   );
+
+  const prevPriceRef = useRef<number | null>(null);
+  const { colorClass, shakeClass } = getPriceTrendClasses(
+    prevPriceRef.current,
+    price
+  );
+  prevPriceRef.current = price;
+
+  const cardClasses = `symbolCard ${
+    id === activeSymbol ? "symbolCard-active" : ""
+  } ${colorClass} ${shakeClass}`;
 
   return (
     <div
-      className="symbolCard"
+      className={cardClasses}
       role="button"
       tabIndex={0}
-      onClick={handleOnClick}
-      onKeyDown={handleKeyDown}
+      onClick={handleInteraction}
+      onKeyDown={handleInteraction}
     >
       <div className="symbol-card-head">
         <div>{id}</div>
