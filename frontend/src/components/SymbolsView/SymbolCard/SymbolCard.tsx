@@ -1,14 +1,14 @@
-import { useCallback, useRef } from "react";
+import React, { memo, useCallback } from "react";
 import { ReactComponent as IndustryLogo } from "@/assets/industry.svg";
 import { ReactComponent as CompanyIcon } from "@/assets/company.svg";
 import { ReactComponent as MarketCapIcon } from "@/assets/market_cap.svg";
 import { useAppSelector } from "@/hooks/redux";
 import getTrendImage from "./utils/getTrendImage";
-import getFlooredPrice from "./utils/getFlooredPrice";
 import abbreviateNumber from "./utils/abbreviateNumber";
-import getPriceTrendClasses from "./utils/getPriceTrendClasses";
 import isClick from "./utils/isClick";
 import isEnterKeyPress from "./utils/isEnterKeyPress";
+import calculateAbsolutePercentageDifference from "./utils/calculateAbsolutePercentageDifference";
+import useTimedClassOnCondition from "./hooks/useTimedClassOnCondition";
 
 import "./symbolCard.css";
 
@@ -19,10 +19,13 @@ type SymbolCardProps = {
   activeSymbol: string | null;
 };
 
-const SymbolCard = ({ id, onClick, price, activeSymbol }: SymbolCardProps) => {
+const SymbolCard = memo(function SymbolCard(props: SymbolCardProps) {
+  const { id, onClick, price, activeSymbol } = props;
   const { trend, industry, companyName, marketCap } = useAppSelector(
     (state) => state.stocks.entities[id]
   );
+
+  const priceValue = price !== undefined ? Math.floor(price) : 0;
 
   const handleInteraction = useCallback(
     (event: React.SyntheticEvent) => {
@@ -33,16 +36,31 @@ const SymbolCard = ({ id, onClick, price, activeSymbol }: SymbolCardProps) => {
     [id, onClick]
   );
 
-  const prevPriceRef = useRef<number | null>(null);
-  const { colorClass, shakeClass } = getPriceTrendClasses(
-    prevPriceRef.current,
-    price
+  const priceChangeClass = useTimedClassOnCondition(
+    priceValue,
+    (prevPrice) => {
+      if (priceValue > prevPrice) {
+        return "green-shadow";
+      } else if (priceValue < prevPrice) {
+        return "red-shadow";
+      }
+    },
+    1000
   );
-  prevPriceRef.current = price;
+
+  const significantPriceChangeClass = useTimedClassOnCondition(
+    priceValue,
+    (prevPrice) => {
+      if (calculateAbsolutePercentageDifference(prevPrice, priceValue) > 25) {
+        return "symbolCard__shake";
+      }
+    },
+    1000
+  );
 
   const cardClasses = `symbolCard ${
     id === activeSymbol ? "symbolCard-active" : ""
-  } ${colorClass} ${shakeClass}`;
+  } ${priceChangeClass} ${significantPriceChangeClass}`;
 
   return (
     <div
@@ -59,7 +77,9 @@ const SymbolCard = ({ id, onClick, price, activeSymbol }: SymbolCardProps) => {
       <div className="symbol-card-content">
         <div className="price-container">
           <div className="price-text">PRICE:</div>
-          <div className="price-amount">{getFlooredPrice(price)} </div>
+          <div className="price-amount">
+            {priceValue === 0 ? "" : priceValue}
+          </div>
         </div>
         <div className="symbol-details">
           <CompanyIcon className="symbol-details-svg" />
@@ -78,5 +98,6 @@ const SymbolCard = ({ id, onClick, price, activeSymbol }: SymbolCardProps) => {
       </div>
     </div>
   );
-};
+});
+
 export default SymbolCard;
