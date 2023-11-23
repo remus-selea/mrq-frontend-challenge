@@ -131,7 +131,3 @@ Assets for this can be found in the [frontend/src/assets](frontend/src/assets) f
   - **IMPORTANT**: The flashing shadow from the price changes takes precedence over the black shadow. (Check videos)
 
 ### Bonus points for using custom hooks, especially for the **animations** and **effects (box shadow)**
-
-
-
-### ESTIMATED TIME: 2-4 hours
