@@ -1,6 +1,4 @@
-# Please read the instructions and the requirements carefully before you start working on the assignment.
 The requirements for this project are listed in the [REQUIREMENTS.md](REQUIREMENTS.md) file.
-
 
 ## General Notes
 
@@ -18,12 +16,12 @@ in the [frontend/src/hooks/redux.ts](frontend/src/hooks/redux.ts) file.
   - *You might find it helpful to reduce the update interval of the price updates during the development* 
 - You might find it helpful to use tools/extensions such as `React Profiler` and `Redux DevTools`. Please
   **do not use** tools such as `Lighthouse` to measure performance as the metrics are irrelevant for this project.
+
 ## Getting Started
 
 ### The project can be started in two ways:
 
 #### 1. Using the scripts in the root directory
-**You need yarn version 2 or higher.**
 - Run `yarn install` in the root directory to install all the dependencies.
   - This will also install the dependencies in the [frontend](frontend), [backend](backend) and [socket](socket) folders.
 - Run `yarn start` in the root directory to start all of the services
@@ -35,18 +33,3 @@ the directories.**
 - Start the mocked backend server in [backend](backend) by running `yarn start`
 - Start the mocked socket server in [socket](socket) by running `yarn start`
 - Start the development server in  [frontend](frontend) by running `yarn dev`
-
-## Submitting the solution
-You should push the starting project monorepo to a private repository (Such as GitHub, GitLab ...)
-- The starting project should be on the `master` branch.
-- The solution should be on a separate branch
-  - There should be an opened pull request from the solution branch to the `master` branch
-  - The pull request should have a description of the changes
-- Once you are done, share the repository with `hristijan@mrq.com`
-
-
-  
-***--- GOOD LUCK ---***
-
-If you have any questions, please send email to **[hristijan\@mrq.com](mailto:hristijan@mrq.com?subject=[THA-Q]Frontend%20Challenge%20Question)**
-.
