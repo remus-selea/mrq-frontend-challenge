@@ -1,22 +1,5 @@
 The requirements for this project are listed in the [REQUIREMENTS.md](REQUIREMENTS.md) file.
 
-## General Notes
-
-- The solution of the challenge should be inside the [frontend](frontend) folder.
-  - Specifically in the [frontend/src](frontend/src) folder.
-  - The [frontend/src/App.css](frontend/src/App.css) has a global css reset.
-  - You may modify/remove/restructure any file in the [frontend/src/components](frontend/src/components) folder as you see fit, but the assignment can be solved optimally with the existing structure/files as well
-  - All the assets are in the [frontend/src/assets](frontend/src/assets) folder.
-  - The [frontend/src/services](frontend/src/services) has the socket service. It shouldn't be necessary to edit this.
-- The colors can be found as css variables in the [frontend/src/index.css](frontend/src/index.css) file.
-- As this project uses Redux Toolkit, you can find the typed `useAppSelector` and `useAppDispatch` hooks
-in the [frontend/src/hooks/redux.ts](frontend/src/hooks/redux.ts) file.
-- For the effects (such as the glow effects of the stock card) you need to replicate the effect as close as possible.
-- Do not submit any changes to the [backend](backend) and [socket](socket) folders. 
-  - *You might find it helpful to reduce the update interval of the price updates during the development* 
-- You might find it helpful to use tools/extensions such as `React Profiler` and `Redux DevTools`. Please
-  **do not use** tools such as `Lighthouse` to measure performance as the metrics are irrelevant for this project.
-
 ## Getting Started
 
 ### The project can be started in two ways:
