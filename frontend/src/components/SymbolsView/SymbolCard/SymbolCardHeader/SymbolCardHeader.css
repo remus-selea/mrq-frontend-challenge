@@ -1,0 +1,18 @@
+.symbol-card-head {
+  padding: 0 8px;
+  background-color: var(--colorDark);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  color: var(--colorWhite);
+}
+
+.symbol-card-trend {
+  position: relative;
+}
+
+.symbol-card-trend-img {
+  position: absolute;
+  bottom: 0px;
+  right: -28px;
+  width: 50px;
+}

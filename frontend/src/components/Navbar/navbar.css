@@ -1,3 +1,28 @@
-nav {
-  background: white;
+.nav-list {
+  display: flex;
+  padding: 2px 0;
+  background-color: var(--colorDark);
+  border-radius: 6px;
+  list-style-type: none;
+}
+
+.nav-list .nav-list-item {
+  margin: 0 10px;
+}
+
+.nav-list .nav-list-item:first-child {
+  margin: 0px;
+}
+
+.nav-list .nav-list-item .nav-link {
+  padding: 0px 8px;
+  font-size: 1.1em;
+  color: white;
+}
+
+.nav-list .nav-list-item .nav-link-active {
+  padding: 8px 8px;
+  background-color: var(--colorPrimary);
+  border-radius: 8px;
+  color: var(--colorDark);
 }

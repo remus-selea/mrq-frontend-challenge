@@ -1,7 +1,23 @@
 .symbolCard {
-  border: 2px solid black; /* just for visibility, feel free to remove it */
-  margin: 10px; /* just for visibility, feel free to remove it */
-  padding: 10px; /* just for visibility, feel free to remove it */
+  background-color: var(--colorWhite);
+  border-radius: 6px;
+}
+
+.symbolCard-active {
+  transform: scale(1.04, 1.04);
+  box-shadow: 0px 0px 12px 2px rgba(14, 17, 32, 0.8);
+}
+
+.symbolCard.red-shadow {
+  box-shadow: 0px 0px 12px 2px rgba(237, 27, 36, 0.8);
+}
+
+.symbolCard.green-shadow {
+  box-shadow: 0px 0px 12px 2px rgba(0, 128, 0, 0.8);
+}
+
+.symbolCard-content {
+  padding: 0 8px 8px 8px;
 }
 
 .symbolCard__shake {

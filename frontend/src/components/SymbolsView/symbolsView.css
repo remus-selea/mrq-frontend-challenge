@@ -1,3 +1,35 @@
+.symbolsView {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.symbolsView__cards {
+  overflow-y: auto;
+}
+
+/* centers the loading div horizontally */
+.symbolsView__cards:has(.loading) {
+  display: flex;
+}
+
 .symbolsView__chart {
   padding: 12px;
+}
+
+@media screen and (min-width: 1024px) {
+  .symbolsView {
+    flex-direction: row;
+  }
+
+  .symbolsView__cards {
+    order: 1;
+    flex-grow: 1;
+  }
+
+  .symbolsView__chart {
+    order: 2;
+    min-width: 424px;
+  }
 }
