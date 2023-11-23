@@ -1,4 +1,3 @@
-The requirements for this project are listed in the [REQUIREMENTS.md](REQUIREMENTS.md) file.
 
 ## Getting Started
 
@@ -16,3 +15,5 @@ the directories.**
 - Start the mocked backend server in [backend](backend) by running `yarn start`
 - Start the mocked socket server in [socket](socket) by running `yarn start`
 - Start the development server in  [frontend](frontend) by running `yarn dev`
+
+The requirements for this project are listed in the [REQUIREMENTS.md](REQUIREMENTS.md) file.
