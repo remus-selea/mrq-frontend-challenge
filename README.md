@@ -17,3 +17,7 @@ the directories.**
 - Start the development server in  [frontend](frontend) by running `yarn dev`
 
 The requirements for this project are listed in the [REQUIREMENTS.md](REQUIREMENTS.md) file.
+
+## Solution
+The solution resides on a [separate branch](https://github.com/remus-selea/mrq-frontend-challenge/tree/solution).
+
